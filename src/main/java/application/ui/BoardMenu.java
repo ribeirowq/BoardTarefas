@@ -1,17 +1,27 @@
 package application.ui;
 
 
+import application.dto.BoardColumnInfoDTO;
+import application.persistence.entity.BoardColumnEntity;
+import application.persistence.entity.BoardEntity;
+import application.persistence.entity.CardEntity;
+import application.service.BoardColumnQueryService;
+import application.service.BoardQueryService;
+import application.service.CardQueryService;
+import application.service.CardService;
 import lombok.AllArgsConstructor;
 
 import java.sql.SQLException;
 import java.util.Scanner;
+
+import static application.persistence.config.ConnectionConfig.getConnection;
 
 @AllArgsConstructor
 public class BoardMenu {
 
     private final Scanner scanner = new Scanner(System.in).useDelimiter("\n");
 
-    private Board entity;
+    private final BoardEntity entity;
 
     public void execute() {
         try {
@@ -50,7 +60,7 @@ public class BoardMenu {
     }
 
     private void createCard() throws SQLException{
-        var card = new Card();
+        var card = new CardEntity();
         System.out.println("Informe o título do card");
         card.setTitle(scanner.next());
         System.out.println("Informe a descrição do card");

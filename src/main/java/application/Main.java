@@ -1,6 +1,7 @@
 package application;
 
 import application.persistence.migration.MigrationStrategy;
+import application.ui.MainMenu;
 
 import java.sql.SQLException;
 
